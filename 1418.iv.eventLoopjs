@@ -1,0 +1,17 @@
+setTimeout(() => {
+  console.log("timeout");
+}, 0);
+
+new Promise((resolve) => {
+  console.log("Promise");
+  resolve();
+}).then(() => {
+  console.log("then");
+});
+
+console.log("log");
+
+// Promise
+// log
+// timeout
+// then

@@ -38,14 +38,43 @@ function say() {
 // cc = say.myBind(ojb2, 1, 2, 3);
 // cc();
 
-Function.prototype.call = function (...args) {
+// Function.prototype.call = function (...args) {
+//   if (typeof this !== "function") {
+//     return;
+//   }
+//   context = args.shift() || window; // 参数默认值并不会排除null，所以重新赋值
+//   context.fn = this; // this是调用call的函数
+//   const result = context.fn(...args);
+//   delete context.fn; // 执行后删除新增属性
+//   return result;
+// };
+
+Function.prototype.call = function (context = window, ...args) {
   if (typeof this !== "function") {
     return;
   }
-  context = args.shift() || window; // 参数默认值并不会排除null，所以重新赋值
-  context.fn = this; // this是调用call的函数
+  context.fn = this;
   const result = context.fn(...args);
-  delete context.fn; // 执行后删除新增属性
+  delete context.fn;
+  return result;
+};
+
+// function sayHelloTo(to) {
+//   console.log(`${this.name} say hello to ${to}`);
+// }
+
+// var Jerry = {
+//   name: "Jerry",
+// };
+// sayHelloTo.call(Jerry, "Tom");
+
+Function.prototype.apply = function (context, ...args) {
+  if (typeof this !== "function") {
+    return;
+  }
+  context.fn = this;
+  const result = context.fn(args);
+  delete context.fn;
   return result;
 };
 
@@ -56,4 +85,4 @@ function sayHelloTo(to) {
 var Jerry = {
   name: "Jerry",
 };
-sayHelloTo.call(Jerry, "Tom");
+sayHelloTo.apply(Jerry, "Tom");

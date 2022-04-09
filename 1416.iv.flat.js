@@ -32,7 +32,7 @@
 
 function flat(array) {
   while (array.some((item) => Array.isArray(item))) {
-    console.log(item, ...array);
+    console.log("---array---", ...array);
     array = [].concat(...array);
   }
   return array;

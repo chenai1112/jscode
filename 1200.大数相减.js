@@ -84,13 +84,8 @@ function addBig(num1, num2) {
   return res;
 }
 
-function addSamll(num1, num2) {
-  let len1 = (num1 + "").split(".")[1].length;
-  let len2 = (num2 + "").split(".")[1].length;
-  let maxlen = Math.max(len1, len2);
-  let a = Math.pow(10, maxlen);
-  return (num1 * a + num2 * a) / a;
-}
+
+
 
 /**
  * @param {string} num1

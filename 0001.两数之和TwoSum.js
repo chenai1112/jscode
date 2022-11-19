@@ -47,3 +47,23 @@ var twoSum = function (nums, target) {
   }
   return [];
 };
+// var twoSum = function( nums, target) {
+//   let obj = {};
+//   let leng = nums.length;
+//   if(leng <= 1){
+//       return [];
+//   }
+//   console.log(nums, target);
+//   for(let i = 0; i < leng-1; i ++){
+//       console.log('--target - nums[i]--', target - nums[i], obj[ target - nums[i]], obj);
+//       if(obj[ target - nums[i]] !== undefined){
+//           return [obj[target - nums[i]], i];
+//       }else{
+//           obj[nums[i]] = i;
+//       }
+
+//   }
+//   return [];
+// };
+
+// console.log(twoSum([3,2,4], 6));

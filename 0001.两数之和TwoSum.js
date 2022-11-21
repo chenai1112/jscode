@@ -35,35 +35,37 @@
 进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？
  */
 
-var twoSum = function (nums, target) {
-  const map = new Map();
-  for (let i = 0; i < nums.length; i++) {
-    const complement = target - nums[i];
-    if (map.has(complement)) {
-      return [map.get(complement), i];
-    } else {
-      map.set(nums[i], i);
+// var twoSum = function (nums, target) {
+//   const map = new Map();
+//   for (let i = 0; i < nums.length; i++) {
+//     const complement = target - nums[i];
+//     console.log('-complement-', complement);
+//     if (map.has(complement)) {
+//       return [map.get(complement), i];
+//     } else {
+//       map.set(nums[i], i);
+//     }
+//   }
+//   console.log('-map-', map);
+//   return [];
+// };
+
+var twoSum = function( nums, target) {
+  let obj = {};
+  let leng = nums.length;
+  if(leng <= 1){
+    return [];
+  }
+  for(let i = 0; i < leng; i ++){
+    let complement = obj[ target - nums[i]];
+    if(complement !== undefined){
+      return [complement, i];
+    }else{
+      obj[nums[i]] = i;
     }
   }
   return [];
 };
-// var twoSum = function( nums, target) {
-//   let obj = {};
-//   let leng = nums.length;
-//   if(leng <= 1){
-//       return [];
-//   }
-//   console.log(nums, target);
-//   for(let i = 0; i < leng-1; i ++){
-//       console.log('--target - nums[i]--', target - nums[i], obj[ target - nums[i]], obj);
-//       if(obj[ target - nums[i]] !== undefined){
-//           return [obj[target - nums[i]], i];
-//       }else{
-//           obj[nums[i]] = i;
-//       }
 
-//   }
-//   return [];
-// };
-
-// console.log(twoSum([3,2,4], 6));
+// console.log(twoSum([3,2,4], 6), '---result');
+console.log(twoSum([2,7,11,15], 9), '---result');
